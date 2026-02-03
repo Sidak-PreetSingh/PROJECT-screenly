@@ -1,0 +1,65 @@
+/* Is class ko check karein, ye dono ko side-by-side rakhegi */
+.meetVideoContainer {
+    display: flex; 
+    flex-direction: row; /* Horizontal layout */
+    width: 100vw;
+    height: 100vh;
+    background: rgb(1, 4, 48);
+}
+
+.meetUserVideo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px; /* Right ki jagah Left karein */
+    width: 200px;
+    z-index: 10;
+    border: 2px solid white;
+}
+
+.buttonContainers {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    text-align: center;
+}
+
+.buttonContainers svg {
+    font-size: 3rem;
+}
+
+.conferenceView { 
+
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Sabko barabar jagah milegi */
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+}
+
+.conferenceView  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Screen puri fill ho jayegi */
+    border-radius: 20px;
+}
+
+.chatRoom {
+    position: absolute;
+    height: 90vh;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    width: 30vw;
+    padding-inline: 20px;
+}
+
+.chatContainer {
+    position: relative;
+    height: 100%;
+}
+
+
+.chattingArea {
+    position: absolute;
+    bottom: 0;
+}
