@@ -1,0 +1,501 @@
+/* Lobby Page - Enhanced Styling */
+
+.lobbyContainer {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animated Background */
+.lobbyBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.floatingParticles,
+.floatingParticles2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: floatAnimation 20s ease-in-out infinite;
+}
+
+.floatingParticles2 {
+  animation-delay: -10s;
+  animation-duration: 25s;
+}
+
+@keyframes floatAnimation {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-30px) rotate(2deg) scale(1.1); 
+    opacity: 0.9;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(-1deg) scale(0.95); 
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(20px) rotate(1deg) scale(1.05); 
+    opacity: 0.6;
+  }
+}
+
+/* Main Lobby Card */
+.lobbyCard {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 30px !important;
+  padding: 60px 40px !important;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.lobbyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Section */
+.lobbyHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.lobbyIcon {
+  font-size: 64px !important;
+  color: #667eea !important;
+  margin-bottom: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+  }
+}
+
+.lobbyTitle {
+  font-weight: 800 !important;
+  color: #2d3748 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.2 !important;
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.lobbySubtitle {
+  color: #718096 !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+
+/* Form Section */
+.lobbyForm {
+  margin-bottom: 40px;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667eea !important;
+  font-size: 24px !important;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lobbyInput {
+  margin-bottom: 0 !important;
+}
+
+.lobbyInput .MuiOutlinedInput-root {
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  padding-left: 50px !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+}
+
+.lobbyInput .MuiOutlinedInput-root:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.lobbyInput .MuiOutlinedInput-root.Mui-focused {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+}
+
+.lobbyInput .MuiInputLabel-root {
+  color: #718096 !important;
+  font-weight: 500 !important;
+}
+
+.lobbyInput .MuiInputLabel-root.Mui-focused {
+  color: #667eea !important;
+}
+
+.connectBtn {
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  border-radius: 16px !important;
+  padding: 16px 32px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3) !important;
+  width: 100% !important;
+}
+
+.connectBtn:hover:not(:disabled) {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(45deg, #5a6fd8, #6a4190) !important;
+}
+
+.connectBtn:active:not(:disabled) {
+  transform: translateY(-1px) !important;
+}
+
+.connectBtn:disabled {
+  background: #cbd5e0 !important;
+  color: #718096 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Video Preview Section */
+.videoPreview {
+  margin-bottom: 32px;
+}
+
+.previewLabel {
+  color: #4a5568 !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+  text-align: center;
+  display: block;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #1a202c;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.previewVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.videoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 16px;
+  border-radius: 0 0 16px 16px;
+}
+
+.videoOverlay .MuiTypography-caption {
+  color: white !important;
+  font-weight: 500 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Instructions Section */
+.instructions {
+  text-align: center;
+}
+
+.instructionText {
+  color: #718096 !important;
+  font-style: italic !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Responsive Design */
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .lobbyContainer {
+    padding: 16px !important;
+  }
+  
+  .lobbyCard {
+    padding: 32px 24px !important;
+    margin: 16px 8px !important;
+    max-width: 100% !important;
+  }
+  
+  .lobbyIcon {
+    font-size: 48px !important;
+  }
+  
+  .lobbyTitle {
+    font-size: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .lobbySubtitle {
+    font-size: 1rem !important;
+    text-align: center !important;
+    margin-bottom: 32px !important;
+  }
+  
+  .videoContainer {
+    height: 180px;
+    max-width: 100% !important;
+  }
+  
+  .videoPreview {
+    margin-bottom: 24px !important;
+  }
+  
+  .connectBtn {
+    padding: 14px 24px !important;
+    font-size: 16px !important;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px !important;
+  }
+  
+  .instructions {
+    margin-top: 20px !important;
+  }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .lobbyContainer {
+    padding: 12px !important;
+  }
+  
+  .lobbyCard {
+    padding: 24px 20px !important;
+    margin: 12px 4px !important;
+  }
+  
+  .lobbyIcon {
+    font-size: 40px !important;
+  }
+  
+  .lobbyTitle {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .lobbySubtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .videoContainer {
+    height: 140px;
+  }
+  
+  .connectBtn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+  
+  .inputIcon {
+    left: 12px !important;
+    font-size: 20px !important;
+  }
+  
+  .instructions {
+    margin-top: 16px !important;
+  }
+}
+
+/* Tablet Devices (min-width: 769px and max-width: 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .lobbyCard {
+    padding: 48px 36px !important;
+    max-width: 500px !important;
+  }
+  
+  .lobbyIcon {
+    font-size: 56px !important;
+  }
+  
+  .lobbyTitle {
+    font-size: 2.25rem !important;
+  }
+  
+  .videoContainer {
+    height: 200px;
+    max-width: 400px !important;
+  }
+  
+  .connectBtn {
+    padding: 16px 32px !important;
+    font-size: 17px !important;
+  }
+}
+
+/* Large Desktop (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .lobbyCard {
+    padding: 60px 48px !important;
+    max-width: 600px !important;
+  }
+  
+  .lobbyIcon {
+    font-size: 64px !important;
+  }
+  
+  .lobbyTitle {
+    font-size: 2.5rem !important;
+  }
+  
+  .lobbySubtitle {
+    font-size: 1.1rem !important;
+  }
+  
+  .videoContainer {
+    height: 240px;
+    max-width: 500px !important;
+  }
+  
+  .connectBtn {
+    padding: 18px 36px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .lobbyCard {
+    padding: 20px 24px !important;
+    margin: 12px 8px !important;
+  }
+  
+  .lobbyIcon {
+    font-size: 36px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .lobbyTitle {
+    font-size: 1.6rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .lobbySubtitle {
+    font-size: 0.85rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .videoContainer {
+    height: 120px;
+  }
+  
+  .videoPreview {
+    margin-bottom: 16px !important;
+  }
+  
+  .inputGroup {
+    margin-bottom: 16px !important;
+  }
+  
+  .instructions {
+    margin-top: 12px !important;
+  }
+}
+
+/* Loading Animation */
+.lobbyCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: loadingShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}

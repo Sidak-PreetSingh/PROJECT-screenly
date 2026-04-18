@@ -26,6 +26,7 @@ export default function Authentication() {
     
 
     const [username, setUsername] = React.useState();
+    const [email, setEmail] = React.useState();
     const [password, setPassword] = React.useState();
     const [name, setName] = React.useState();
     const [error, setError] = React.useState();
@@ -48,9 +49,10 @@ export default function Authentication() {
 
             }
             if (formState === 1) {
-                let result = await handleRegister(name, username, password);
+                let result = await handleRegister(name, username, email, password);
                 console.log(result);
                 setUsername("");
+                setEmail("");
                 setMessage(result);
                 setOpen(true);
                 setError("")
@@ -113,12 +115,24 @@ export default function Authentication() {
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="username"
+                                id="fullname"
                                 label="Full Name"
-                                name="username"
+                                name="fullname"
                                 value={name}
                                 autoFocus
                                 onChange={(e) => setName(e.target.value)}
+                            /> : <></>}
+
+                            {formState === 1 ? <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email"
+                                name="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             /> : <></>}
 
                             <TextField

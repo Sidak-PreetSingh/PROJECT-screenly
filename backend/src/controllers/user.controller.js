@@ -4,6 +4,7 @@ import bcrypt, { hash } from "bcrypt"
 
 import crypto from "crypto"
 import { Meeting } from "../models/meeting.model.js";
+import { LoginActivity } from "../models/loginActivity.model.js";
 const login = async (req, res) => {
 
     const { username, password } = req.body;
@@ -23,9 +24,26 @@ const login = async (req, res) => {
 
         if (isPasswordCorrect) {
             let token = crypto.randomBytes(20).toString("hex");
+            const ipAddress = req.headers["x-forwarded-for"]?.split(",")[0]?.trim()
+                || req.socket?.remoteAddress
+                || req.ip
+                || "unknown";
+            const userAgent = req.headers["user-agent"] || "unknown";
 
             user.token = token;
+            user.lastLoginAt = new Date();
+            user.lastLoginIp = ipAddress;
+            user.loginCount = (user.loginCount || 0) + 1;
             await user.save();
+
+            await LoginActivity.create({
+                userId: user._id,
+                username: user.username,
+                ipAddress,
+                userAgent,
+                loggedInAt: new Date()
+            });
+
             return res.status(httpStatus.OK).json({ token: token })
         } else {
             return res.status(httpStatus.UNAUTHORIZED).json({ message: "Invalid Username or password" })
@@ -38,13 +56,21 @@ const login = async (req, res) => {
 
 
 const register = async (req, res) => {
-    const { name, username, password } = req.body;
+    const { name, username, email, password } = req.body;
 
 
     try {
+        if (!name || !username || !email || !password) {
+            return res.status(httpStatus.BAD_REQUEST).json({ message: "Please provide name, username, email and password" });
+        }
+
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(httpStatus.FOUND).json({ message: "User already exists" });
+        }
+        const existingEmail = await User.findOne({ email: email.toLowerCase() });
+        if (existingEmail) {
+            return res.status(httpStatus.FOUND).json({ message: "Email already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -52,6 +78,7 @@ const register = async (req, res) => {
         const newUser = new User({
             name: name,
             username: username,
+            email: email.toLowerCase(),
             password: hashedPassword
         });
 
@@ -98,4 +125,21 @@ const addToHistory = async (req, res) => {
 }
 
 
-export { login, register, getUserHistory, addToHistory }
+const debugUsers = async (req, res) => {
+    try {
+        const allUsers = await User.find({});
+        const s2User = await User.findOne({ username: "s2" });
+        const s2Email = await User.findOne({ email: "s2@gmail.com" });
+        
+        res.json({
+            totalUsers: allUsers.length,
+            allUsers: allUsers.map(u => ({ username: u.username, email: u.email, name: u.name })),
+            s2User: s2User,
+            s2Email: s2Email
+        });
+    } catch (e) {
+        res.json({ error: e.message });
+    }
+}
+
+export { login, register, getUserHistory, addToHistory, debugUsers }

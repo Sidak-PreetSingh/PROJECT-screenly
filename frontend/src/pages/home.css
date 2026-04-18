@@ -1,0 +1,500 @@
+/* Home Page - Enhanced Lobby Styling */
+
+.homeContainer {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated background particles */
+.homeContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: floatAnimation 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(20px) rotate(-1deg); }
+}
+
+/* Enhanced Navigation Bar */
+.navBar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 0 0 20px 20px !important;
+  padding: 15px 30px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  z-index: 10;
+}
+
+.navBrand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.brandIcon {
+  font-size: 36px !important;
+  color: #667eea !important;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.brandText {
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin: 0 !important;
+}
+
+.navActions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+.navItem {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  padding: 8px 12px !important;
+  border-radius: 12px !important;
+}
+
+.navItem:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.navIcon {
+  color: #667eea !important;
+  font-size: 24px !important;
+  margin-bottom: 4px !important;
+}
+
+.logoutBtn {
+  border-color: #667eea !important;
+  color: #667eea !important;
+  border-radius: 12px !important;
+  padding: 8px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.logoutBtn:hover {
+  background: #667eea !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Enhanced Meeting Container */
+.meetContainer {
+  display: flex !important;
+  height: calc(100vh - 80px);
+  padding: 40px !important;
+  gap: 60px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative;
+  z-index: 5;
+}
+
+.leftPanel {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.contentCard {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  padding: 60px !important;
+  border-radius: 30px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  max-width: 500px !important;
+  width: 100% !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.mainTitle {
+  font-weight: 800 !important;
+  color: #2d3748 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.2 !important;
+}
+
+.highlightText {
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block !important;
+  margin-left: 8px !important;
+}
+
+.subtitle {
+  color: #718096 !important;
+  margin-bottom: 40px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+}
+
+.inputSection {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.meetingInput {
+  margin-bottom: 0 !important;
+}
+
+.meetingInput .MuiOutlinedInput-root {
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+}
+
+.meetingInput .MuiOutlinedInput-root:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.meetingInput .MuiOutlinedInput-root.Mui-focused {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+}
+
+.joinBtn {
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  border-radius: 16px !important;
+  padding: 16px 32px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3) !important;
+}
+
+.joinBtn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(45deg, #5a6fd8, #6a4190) !important;
+}
+
+.joinBtn:active {
+  transform: translateY(-1px) !important;
+}
+
+.helperText {
+  color: #a0aec0 !important;
+  text-align: center !important;
+  font-style: italic !important;
+  font-size: 14px !important;
+}
+
+/* Enhanced Right Panel */
+.rightPanel {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+}
+
+.mainImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 30px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.mainImage:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25) !important;
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  border-radius: 0 0 30px 30px;
+  padding: 30px 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageContainer:hover .imageOverlay {
+  opacity: 1;
+}
+
+.overlayText {
+  color: white !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .meetContainer {
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 20px !important;
+    height: auto !important;
+  }
+  
+  .leftPanel, .rightPanel {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+  
+  .contentCard {
+    padding: 30px 24px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .mainTitle {
+    font-size: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .subtitle {
+    font-size: 1rem !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+  }
+  
+  .inputSection {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  .joinBtn {
+    padding: 14px 24px !important;
+    font-size: 16px !important;
+  }
+  
+  .imageContainer {
+    max-width: 300px !important;
+    aspect-ratio: 1 !important;
+  }
+  
+  .navActions {
+    gap: 12px !important;
+  }
+  
+  .navItem {
+    padding: 6px 8px !important;
+  }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navBar {
+    padding: 10px 16px !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .navBrand {
+    order: 2 !important;
+  }
+  
+  .navActions {
+    order: 1 !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  .brandText {
+    font-size: 1.4rem !important;
+  }
+  
+  .contentCard {
+    padding: 24px 16px !important;
+    margin: 16px 8px !important;
+  }
+  
+  .mainTitle {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .inputSection {
+    gap: 12px !important;
+  }
+  
+  .joinBtn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+  
+  .imageContainer {
+    max-width: 250px !important;
+  }
+  
+  .helperText {
+    font-size: 12px !important;
+  }
+}
+
+/* Tablet Devices (min-width: 769px and max-width: 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .meetContainer {
+    gap: 40px !important;
+    padding: 30px !important;
+  }
+  
+  .contentCard {
+    padding: 50px 40px !important;
+  }
+  
+  .imageContainer {
+    max-width: 400px !important;
+  }
+}
+
+/* Large Desktop (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .meetContainer {
+    gap: 60px !important;
+    padding: 40px !important;
+  }
+  
+  .contentCard {
+    padding: 60px !important;
+    max-width: 500px !important;
+  }
+  
+  .imageContainer {
+    max-width: 500px !important;
+  }
+  
+  .mainTitle {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .meetContainer {
+    flex-direction: row !important;
+    gap: 20px !important;
+    padding: 16px !important;
+  }
+  
+  .leftPanel {
+    flex: 2 !important;
+  }
+  
+  .rightPanel {
+    flex: 1 !important;
+  }
+  
+  .contentCard {
+    padding: 24px !important;
+  }
+  
+  .imageContainer {
+    max-width: 200px !important;
+  }
+}
+
+/* Loading and transition animations */
+.contentCard {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.imageContainer {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
