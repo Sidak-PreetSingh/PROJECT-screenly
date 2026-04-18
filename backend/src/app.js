@@ -27,7 +27,9 @@ app.use("/api/v1/users", userRoutes);
 const start = async () => {
     app.set("mongo_user")
     const mongoUri = process.env.MONGO_URI
-    const connectionDb = await mongoose.connect(mongoUri)
+    const connectionDb = await mongoose.connect(mongoUri, {
+        dbName: "screenly" // Add database name
+    })
 
     console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`)
     server.listen(process.env.PORT || 8000, () => {
