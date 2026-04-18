@@ -7,7 +7,10 @@ import mongoose from "mongoose";
 import { connectToSocket } from "./controllers/socketManager.js";
 
 import cors from "cors";
+import dotenv from "dotenv";
 import userRoutes from "./routes/users.routes.js";
+
+dotenv.config();
 
 const app = express();
 const server = createServer(app);
@@ -23,12 +26,12 @@ app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
     app.set("mongo_user")
-    const mongoUri = process.env.MONGO_URI || "mongodb+srv://imdigitalashish:imdigitalashish@cluster0.cujabk4.mongodb.net/"
+    const mongoUri = process.env.MONGO_URI
     const connectionDb = await mongoose.connect(mongoUri)
 
     console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`)
-    server.listen(app.get("port"), () => {
-        console.log("LISTENIN ON PORT 8000")
+    server.listen(process.env.PORT || 8000, () => {
+        console.log(`LISTENIN ON PORT ${process.env.PORT || 8000}`)
     });
 
 
