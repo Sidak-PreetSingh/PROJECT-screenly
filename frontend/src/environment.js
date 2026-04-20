@@ -1,7 +1,6 @@
-let IS_PROD = true;
+let IS_PROD = process.env.NODE_ENV === 'production';
 const server = IS_PROD ?
-    "https://screenly-3bvq.onrender.com" :
-
+    (process.env.REACT_APP_API_URL || "https://screenly-backend.onrender.com") :
     "http://localhost:8000"
 
 

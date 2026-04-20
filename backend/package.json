@@ -2,12 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
-    "prod": "pm2 server.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "prod": "pm2 src/app.js",
+    "build": "echo 'No build step required'"
   },
   "author": "apnacollege",
   "license": "ISC",
@@ -19,7 +20,6 @@
     "http-status": "^1.7.3",
     "mongoose": "^8.0.3",
     "nodemon": "^3.0.2",
-    "socket.io": "^4.7.3",
-    "dotenv": "^16.3.1"
+    "socket.io": "^4.7.3"
   }
 }

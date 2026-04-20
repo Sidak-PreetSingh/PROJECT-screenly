@@ -1,0 +1,31 @@
+services:
+  # Backend Service
+  - type: web
+    name: screenly-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8000
+      - key: MONGO_URI
+        value: mongodb+srv://imdigitalashish:imdigitalashish@cluster0.cujabk4.mongodb.net/
+    healthCheckPath: /api/health
+
+  # Frontend Service  
+  - type: web
+    name: screenly-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend/build
+    buildCommand: npm run build
+    buildEnvVars:
+      - key: REACT_APP_API_URL
+        value: https://screenly-backend.onrender.com
+    envVars:
+      - key: NODE_ENV
+        value: production
